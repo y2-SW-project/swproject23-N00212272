@@ -18,9 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fName',
+        'lName',
         'email',
         'password',
+        'address1',
+        'address2',
+        'address3',
+        'role_id'
     ];
 
     /**
@@ -41,4 +46,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role', 'user_role');
+    }
+
+    public function authorizeRoles($roles)
+    {
+        //IF the user doesnt have a role for the specific view show the 401 message
+        if(is_array($roles)){
+            return $this->hasAnyRole($roles) ||
+            abort (401, 'This action is unauthorzed');
+        }
+        return $this->hasRole($roles) ||
+        abort(401, 'This action is unauthorized');
+    }
+
+    public function hasRole($role)
+    {
+        return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function hasAnyRole($roles)
+    {
+        return null !== $this->roles()->whereIn('name', $roles)->first();
+    }
 }
