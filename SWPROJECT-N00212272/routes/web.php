@@ -1,17 +1,12 @@
 <?php
+//VSC is told where to find the product controller
+//product controllers
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,4 +14,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//This is the controller for Products
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+
+Route::resource('/admin/products', AdminProductController::class)->middleware(['auth'])->names('admin.products');
