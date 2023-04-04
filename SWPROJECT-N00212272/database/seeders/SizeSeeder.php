@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 use App\Models\Size;
-use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,15 +11,22 @@ class SizeSeeder extends Seeder
     {
       
 
-       Size::factory()
-       ->times(3)
-       ->create();
-           //this gets the sizes and assigns them to a product
-           foreach(Product::all() as $product) 
-           {
-               $sizes = Size::inRandomOrder()->take(rand(1,3))->pluck('id');
-               $product->sizes()->attach($sizes);
-           }
+        {
+            $sizes= [
+               ['ageRange' => '0-6M'],
+               ['ageRange' => '6-12M'],
+               ['ageRange' => '1+'],
+               ['ageRange' => '2+'],
+               ['ageRange' => '3+'],
+               ['ageRange' => '4+'],
+               ['ageRange' => '5+'],
+           ];
+       
+          
+           
+           Size::insert($sizes);
+             
+          }
    }
     }
 

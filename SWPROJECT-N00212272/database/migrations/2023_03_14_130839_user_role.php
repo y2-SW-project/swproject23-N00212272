@@ -19,8 +19,6 @@ return new class extends Migration
             //FKs to link the other tables
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('role_id')->unsigned();
-            $table->timestamps();
-
 
         //adds the foreign keys and connects them to the ids from their tables
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
