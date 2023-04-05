@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Material;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -10,16 +10,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
-class MaterialController extends Controller
+class CategoryController extends Controller
 {
 
     public function index(Request $request)
     {
         $user = Auth::user();
         $user->authorizeRoles('admin');
-        $materials = Material::all();
+        $categories = Category::all();
       
-        return view('admin.materials.index')->with('materials',$materials);
+        return view('admin.categories.index')->with('categories',$categories);
     }
 
 
@@ -30,7 +30,7 @@ class MaterialController extends Controller
 
 
         //shows the create view from create.blade.php
-        return view('admin.materials.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -45,60 +45,60 @@ class MaterialController extends Controller
         
           
             
-       $material = new Material;
-       $material->name = $request->name;
-       $material->save();
+       $category = new Category;
+       $category->name = $request->name;
+       $category->save();
 
-         return to_route('admin.materials.index');
+         return to_route('admin.categories.index');
     
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Material $material)
-    {
-        return view('admin.materials.show')->with('material',$material);
-    }
+    // public function show(Category $category)
+    // {
+    //     return view('admin.categories.show')->with('category',$category);
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Material $material)
+    public function edit(Category $category)
     {
           $user = Auth::user();
         $user->authorizeRoles('admin');
 
     
         
-        return view('admin.materials.edit')->with('material',$material);
+        return view('admin.categories.edit')->with('category',$category);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, Category $category)
     {
       
     $request->validate([
         'name' => 'required|max:120',
     ]);
         //updates the variables in database
-    $material->update([
+    $category->update([
         'name' => $request->name,
     ]);
         
-    return to_route('admin.materials.index');
+    return to_route('admin.categories.index');
   
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Material $material)
+    public function destroy(Category $category)
     {
-        $material->delete();
-        return to_route('admin.materials.index');
+        $category->delete();
+        return to_route('admin.categories.index');
     }
    
 }

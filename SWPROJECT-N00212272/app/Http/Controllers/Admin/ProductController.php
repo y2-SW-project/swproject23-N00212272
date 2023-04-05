@@ -10,7 +10,7 @@ use App\Models\Material;
 use App\Models\Condition;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Enums\CategoryTypesEnum;
+// use App\Enums\CategoryTypesEnum;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,17 +18,30 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         $user->authorizeRoles('admin');
-
+        $categories = Category::all();
         $products = Product::all();
+        $sizes = Size::all();
+        $conditions = Condition::all();
+        $products = Product::when($request->category_id != null, function($q) use ($request){
+            return $q->where('category_id',$request->category_id);
+        })
+        ->when($request->condition_id != null, function($q) use ($request){
+            return $q->where('condition_id',$request->condition_id);
+        })
+        ->when($request->size_id != null, function($q) use ($request){
+            return $q->where('size_id',$request->size_id);
+        })
+        ->when($request->price != null, function($q) use ($request){
+            return $q->orderby('price',$request->price);
+        })
+        ->paginate(25);
 
-       
 
-
-        return view('admin.products.index')->with('products', $products);
+        return view('admin.products.index')->with(compact('products'));
     }
 
 

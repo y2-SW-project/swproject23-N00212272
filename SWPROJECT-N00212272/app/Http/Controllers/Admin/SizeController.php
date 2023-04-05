@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Material;
+use App\Models\Size;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -10,16 +10,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
-class MaterialController extends Controller
+class SizeController extends Controller
 {
 
     public function index(Request $request)
     {
         $user = Auth::user();
         $user->authorizeRoles('admin');
-        $materials = Material::all();
+        $sizes = Size::all();
       
-        return view('admin.materials.index')->with('materials',$materials);
+        return view('admin.sizes.index')->with('sizes',$sizes);
     }
 
 
@@ -30,7 +30,7 @@ class MaterialController extends Controller
 
 
         //shows the create view from create.blade.php
-        return view('admin.materials.create');
+        return view('admin.sizes.create');
     }
 
     /**
@@ -40,65 +40,66 @@ class MaterialController extends Controller
     
         
         $request->validate([
-            'name' => 'required|max:120',
+            'ageRange' => 'required|max:120',
         ]);
         
           
             
-       $material = new Material;
-       $material->name = $request->name;
-       $material->save();
+       $size = new Size;
 
-         return to_route('admin.materials.index');
+       $size->ageRange = $request->ageRange;
+       $size->save();
+
+         return to_route('admin.sizes.index');
     
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Material $material)
-    {
-        return view('admin.materials.show')->with('material',$material);
-    }
+    // public function show(Size $size)
+    // {
+    //     return view('admin.sizes.show')->with('size',$size);
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Material $material)
+    public function edit(Size $size)
     {
           $user = Auth::user();
         $user->authorizeRoles('admin');
 
     
         
-        return view('admin.materials.edit')->with('material',$material);
+        return view('admin.sizes.edit')->with('size',$size);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, Size $size)
     {
       
     $request->validate([
-        'name' => 'required|max:120',
+        'ageRange' => 'required|max:120',
     ]);
         //updates the variables in database
-    $material->update([
-        'name' => $request->name,
+    $size->update([
+        'ageRange' => $request->ageRange,
     ]);
         
-    return to_route('admin.materials.index');
+    return to_route('admin.sizes.index');
   
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Material $material)
+    public function destroy(Size $size)
     {
-        $material->delete();
-        return to_route('admin.materials.index');
+        $size->delete();
+        return to_route('admin.sizes.index');
     }
    
 }
