@@ -14,9 +14,22 @@ class MaterialSeeder extends Seeder
      */
     public function run(): void
     {
-        Material::factory()
-       ->times(7)
-       ->create();
+        {
+            $names= [
+               ['name' => 'Cotton'],
+               ['name' => 'Linen'],
+               ['name' => 'Leather'],
+               ['name' => 'Silk'],
+               ['name' => 'Wool'],
+               ['name' => 'Cashmere'],
+               ['name' => 'Hemp']
+           ];
+       
+          
+           
+           Material::insert($names);
+             
+          }
            //this gets the sizes and assigns them to a product
            foreach(Product::all() as $product) 
            {
