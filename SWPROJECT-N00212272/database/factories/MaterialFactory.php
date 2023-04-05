@@ -17,10 +17,8 @@ class MaterialFactory extends Factory
      */
     public function definition(): array
     {
-        
-        $names = ['Cotton','Linen','Leather','Silk','Wool','Cashmere','Hemp'];
-        $random = Arr::random($names);
-        return [ "name" => Arr::random($names)];
-
+        return [
+            //
+        ];
     }
 }
