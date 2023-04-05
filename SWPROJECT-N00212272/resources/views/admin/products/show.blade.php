@@ -5,13 +5,16 @@
 <div id="carouselPic"  class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" height="700" src="{{ asset('storage/images/' . $product->image1) }}" alt="First slide">
+      <img class="d-block d-md-none w-100" height="200" src="{{ asset('storage/images/' . $product->image1) }}" alt="First slide">
+        <img class="d-none d-md-block w-100" height="700" src="{{ asset('storage/images/' . $product->image1) }}" alt="First slide">
     </div>
     <div class="carousel-item ">
-      <img class="d-block w-100"height="700" src="{{ asset('storage/images/' . $product->image2) }}" alt="Second slide">
+    <img class="d-block d-md-none w-100" height="200" src="{{ asset('storage/images/' . $product->image2) }}" alt="Second slide">
+        <img class="d-none d-md-block w-100" height="700" src="{{ asset('storage/images/' . $product->image2) }}" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" height="700" src="{{ asset('storage/images/' . $product->image3) }}" alt="Third slide">
+     <img class="d-block d-md-none w-100" height="200" src="{{ asset('storage/images/' . $product->image3) }}" alt="Third slide">
+        <img class="d-none d-md-block w-100" height="700" src="{{ asset('storage/images/' . $product->image3) }}" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" role="button" data-bs-target="#carouselPic"  data-bs-slide="prev">
@@ -28,22 +31,22 @@
               <div class="container bg-secondary mt-3 pb-4">
               <div class="container">
                 <div class="row">
-                <p class="opacity-70 col-2 mt-4">
+                <p class="opacity-70 col-md-2 col-6 mt-4">
                     <strong>Created: </strong> {{ $product->created_at->diffForHumans() }}
                 </p>
               
-                  <p class="opacity-70 col-2 mt-4">
+                  <p class="opacity-70 col-md-2 col-6 mt-4">
                     <strong>Updated at: </strong> {{ $product->updated_at->diffForHumans() }}
                 </p>
                {{-- button to bring you to edit page --}}
-                  <a href="{{route ('admin.products.edit', $product )}}" class="btn btn-success mt-3 col-12 ">Edit</a>
+                  <a href="{{route ('admin.products.edit', $product )}}" class="btn btn-success mt-3  col-12 ">Edit</a>
                
                  {{-- deletes the product --}}
                  <form action="{{ route('admin.products.destroy',$product) }}" method="post" class=" mt-3 ">
                   {{-- laravel function to delete form --}}
                     @method('delete')
                     @csrf
-                    <button type="submit" class="btn  btn-danger col-12" onclick="return confirm('Are you sure you want to delete')">Delete</button>
+                    <button type="submit" class="btn  btn-danger  col-12" onclick="return confirm('Are you sure you want to delete')">Delete</button>
                      </form>
                       </div>  
                       <div class="row mt-5 border">
