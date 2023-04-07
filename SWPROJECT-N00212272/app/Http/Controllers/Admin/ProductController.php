@@ -26,6 +26,8 @@ class ProductController extends Controller
         $products = Product::all();
         $sizes = Size::all();
         $conditions = Condition::all();
+
+        //filter through various details
         $products = Product::when($request->category_id != null, function($q) use ($request){
             return $q->where('category_id',$request->category_id);
         })
@@ -127,7 +129,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('admin.products.show')->with('product',$product);
+        $products = Product::paginate(3);
+        return view('admin.products.show')->with('product',$product)->with('products',$products);
     }
 
     /**
