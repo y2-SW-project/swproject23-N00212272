@@ -7,29 +7,29 @@
     @method('put')
         @csrf
    <div class="form-group">
-    <label for="name">name</label>
+    <label for="name"><dt>name</dt></label>
     <input type="text" class="form-control" id="name" name="name" field="name" required value="{{$product->name}}">
   </div>
   <div class="form-group">
-    <label for="description">Description</label>
+    <label for="description"><dt>Description</dt></label>
     <textarea class="form-control" id="description" name="description" field="description"  required rows="10">{{$product->description}}</textarea>
   </div>
 
    <div class="form-group">
-    <label for="image1">Presenting image</label>
+    <label for="image1"><dt>Presenting image</dt></label>
     <input type="file" name="image1" title="image1" field="image1" class="form-control-file" id="image1">
   </div>
    <div class="form-group">
-    <label for="image2">Second image</label>
+    <label for="image2"><dt>Second image</dt></label>
     <input type="file" name="image2" title="image2" field="image2" class="form-control-file" id="image2">
   </div>
    <div class="form-group">
-    <label for="image3">Third image</label>
+    <label for="image3"><dt>Third image</dt></label>
     <input type="file" name="image3"  title="image3" field="image3" class="form-control-file" id="image3">
   </div>
 
   <div class="form-group">
-    <label for="category">category</label>
+    <label for="category"><dt>category</dt></label>
     <select class="form-control form-control-lg" name="category_id" required>
     @forelse($categories as $category)
     @if($category->id == $product->category->id)
@@ -43,7 +43,7 @@
     @endforelse
     </select>
      <div class="form-group">
-    <label for="category">condtions</label>
+    <label for="category"><dt>condtions</dt></label>
     <select class="form-control form-control-lg" name="condition_id" required>
     @forelse($conditions as $condition)
     @if($condition->id == $product->condition->id)
@@ -57,7 +57,7 @@
     @endforelse
     </select>
       <div class="form-group">
-    <label for="category">sizes</label>
+    <label for="sizes"><dt>sizes</dt></label>
     <select class="form-control form-control-lg" name="size_id" required>
     @forelse($sizes as $size)
     @if($size->id == $product->size->id)
@@ -71,7 +71,7 @@
     @endforelse
     </select>
     <div class="form-group">
-  <label for="price">Enter a price:</label>
+  <label for="price"><dt>Enter a price:</dt></label>
   <input type="number" class="form-control"  id="price" name="price" placeholder="{{$product->price}}" value="{{$product->price}}" required>
 </div>
 <div class="form-group my-3">

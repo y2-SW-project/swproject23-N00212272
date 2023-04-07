@@ -4,28 +4,29 @@
 <div class="container">
 <div class="d-flex justify-content-between">
 
-  <a href="{{ route('admin.products.create') }}" class="btn btn-lg bg-success mb-2">New Product</a>
+  <a href="{{ route('admin.products.create') }}" class="btn btn-lg bg-primary mb-2"><strong>New Product</strong></a>
     
 	
-  <a href="{{ route('admin.categories.index') }}" class="btn btn-lg bg-success mb-2">Categories</a>
+  <a href="{{ route('admin.categories.index') }}" class="btn btn-lg bg-primary mb-2"><strong>Categories</strong></a>
     
 
-    <a href="{{ route('admin.conditions.index') }}" class="btn btn-lg bg-success mb-2">Conditions</a>
+    <a href="{{ route('admin.conditions.index') }}" class="btn btn-lg bg-primary mb-2"><strong>Conditions</strong></a>
 	 
 	  
-	  <a href="{{ route('admin.sizes.index') }}" class="btn btn-lg bg-success mb-2">Sizes</a>
+	  <a href="{{ route('admin.sizes.index') }}" class="btn btn-lg bg-primary mb-2"><strong>Sizes</strong></a>
 	    
-	    <a href="{{ route('admin.materials.index') }}" class="btn btn-lg bg-success mb-2">Materials</a>
+	    <a href="{{ route('admin.materials.index') }}" class="btn btn-lg bg-primary mb-2"><strong>Materials</strong></a>
   
   </div>
   </div>
-<div class="container-fluid">
+<div class="container-fluid ">
 <form action="" method="GET">
-<div class="row mt-3">
-<div class="col-md-2 col-12">
-<h2>Filter to your benefit</h2>
-<div class="col-md-10 ">
-<label>Filter by Category</label>
+<div class="row mt-3 ">
+<div class="col-md-2  rounded bg-primary col-12 ">
+<div class="sticky-top pt-6">
+<h2 class="display-secondary">Filter to your benefit</h2>
+<div class="col-md-10   ">
+<label><strong>Filter by Category</strong></label>
 <select name="category_id" class="form-select">
 	<option value="">Select category</option>
 	<option value="1" {{Request::get('category_id') == '1'}}>Clothes</option>
@@ -40,7 +41,7 @@
 </select>
 </div>
 <div class="col-md-10">
-<label>Filter by condition</label>
+<label><strong>Filter by condition</strong></label>
 <select name="condition_id" class="form-select">
 	<option value="">Select condition</option>
 	<option value="1" {{Request::get('condition_id') == '1'}}>Bad</option>
@@ -50,7 +51,7 @@
 </select>
 </div>
 <div class="col-md-10">
-<label>Filter by Size</label>
+<label><strong>Filter by Size</strong></label>
 <select name="size_id" class="form-select">
 	<option value="">Select category</option>
 	<option value="1" {{Request::get('size_id') == '1'}}>0-6 months</option>
@@ -63,7 +64,7 @@
 </select>
 </div>
 <div class="col-md-10">
-<label>Filter by Price</label>
+<label><strong>Filter by Price</strong></label>
 <select name="price" class="form-select">
 	<option value="">Select price</option>
 	<option value="desc" {{Request::get('price') == 'desc'}}>highest->lowest</option>
@@ -73,7 +74,8 @@
 
 <div class="col-md-10">
 <br/>
-<button type="submit" class="btn btn-primary">Filter</button>
+<button type="submit" class="btn btn-secondary">Filter</button>
+</div>
 </div>
 </div>
 
@@ -81,18 +83,18 @@
 	<div class="row col-md-8 col-12">
 	 @forelse ($products as $product)
    
-  <div class="col-md-4 col-6 mt-2">
-	 <div class="card ">
+  <div class="col-md-4 col-6 ">
+	 <div class="card border border-secondary mb-3">
 		 <a href="{{route('admin.products.show', $product) }}"><img src="{{ asset('storage/images/' . $product->image1) }}" 
     class="card-img-top d-md-block d-none" height="250" alt="" />
 	 <a href="{{route('admin.products.show', $product) }}"><img src="{{ asset('storage/images/' . $product->image1) }}" 
     class="card-img-top d-md-none d-block" height="150" alt="" />
-			<div class="card-body"></a>
-				<h4 class="card-title text-center d-none d-md-block ">{{($product->name)}}</h4>
-				<h5 class="card-subtitle text-center">Category: {{($product->category->name) }}</h5>
-				<h6 class="card-text text-center mt-2"><i class="fa-solid fa-location-pin px-2"></i>Price :£{{$product->price}}</h6>
+			<div class="card-body border border-primary"></a>
+				<h3 class="card-title display-secondary text-center d-none d-md-block ">{{($product->name)}}</h3>
+				<h4 class="card-subtitle display-secondary text-center mt-2"><i class="fa-solid fa-location-pin px-2"></i>Price :£{{$product->price}}</h4>
+				<h5 class="card-text text-center mt-2 "><strong>Condition: </strong>{{($product->condition->type)}}</h5>
 				<div class="row">
-			<a href="" class="btn btn-primary justify-content-center text-light mt-2  fw-semibold"
+			<a href="" class="btn btn-secondary justify-content-center text-light mt-2  fw-semibold"
 				>Add to Basket</a
 			></div>
 		</div>
