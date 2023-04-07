@@ -24,8 +24,7 @@ class User extends Authenticatable
         'password',
         'address1',
         'address2',
-        'address3',
-        'role_id'
+        'address3'
     ];
 
     /**
@@ -72,4 +71,5 @@ class User extends Authenticatable
     {
         return null !== $this->roles()->whereIn('name', $roles)->first();
     }
+   
 }
