@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Models\Role;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -68,20 +69,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
-        return User::create([
-            'fName' => $data['fName'],
-            'lName' => $data['lName'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'address1' => $data['address1'],
-            'address2' => $data['address2'],
-            'address3' => $data['address3'],
-        ]);
-        // return user_role::create([
-        //     'user_id' => $data['id'],
-        //     'role_id' => 2,
-        // ]);
+        // dd($data);
+     
+        $role_customer = Role::where('name', 'customer')->first();
+        $user = new User();
+        $user->fName = $data['fName'];
+        $user->lName = $data['lName'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->address1 = $data['address1'];
+        $user->address2 = $data['address2'];
+        $user->address3 = $data['address3'];
+        $user->save();
+        $user->roles()->attach($role_customer);
+
+        return $user;
        
     }
 }
