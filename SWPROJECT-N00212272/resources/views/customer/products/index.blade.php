@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if (session('success'))
+    <h1 class="alert alert-success text-center">
+        {{ session('success') }}
+    </h1>
+@endif
 <div class=" text-center">
 <a href="{{ route('customer.products.create') }}" class="btn btn-lg bg-success mb-2"><strong>Start Selling</strong></a>
 </div>
@@ -65,7 +70,7 @@
 </div>
 
 </form>
-	<div class="row col-md-8 col-12">
+	<div class="row col-md-9 col-12">
 	 @forelse ($products as $product)
    
   <div class="col-md-4 col-6 ">
@@ -90,7 +95,7 @@
 
 
 		 @empty
-         <p>You have no products displaying.</p>
+         <h1 class="text-danger text-center">All product are out of stock</h1>
         @endforelse
 		</div>
 		</div>

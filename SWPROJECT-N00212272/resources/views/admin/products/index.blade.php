@@ -22,10 +22,10 @@
 <div class="container-fluid ">
 <form action="" method="GET">
 <div class="row mt-3 ">
-<div class="col-md-2  rounded bg-primary col-12 ">
+<div class="col-md-2 mt-2 rounded bg-primary col-12">
 <div class="sticky-top pt-6">
 <h2 class="display-secondary">Filter to your benefit</h2>
-<div class="col-md-10   ">
+<div class="col-md-10">
 <label><strong>Filter by Category</strong></label>
 <select name="category_id" class="form-select">
 	<option value="">Select category</option>
@@ -80,7 +80,7 @@
 </div>
 
 </form>
-	<div class="row col-md-8 col-12">
+	<div class="row col-md-9 mt-2 col-12">
 	 @forelse ($products as $product)
    
   <div class="col-md-4 col-6 ">

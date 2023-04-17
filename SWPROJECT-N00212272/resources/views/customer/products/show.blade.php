@@ -1,7 +1,7 @@
 @extends('layouts.app')
    
 @section('content')
-<div class= "container mt-4">
+<div class= "container rounded mt-4">
 <div id="carouselPic"  class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner border border-secondary">
     <div class="carousel-item active">
@@ -28,8 +28,10 @@
 </div>
 </div>
 
-              <div class="container bg-primary mt-3 pb-4">
-                      <div class="row mt-5 border">
+              <div class="container bg-primary rounded mt-3 pb-4">
+              <a href="{{route ('customer.products.buy', $product )}}" class="btn btn-success mt-3  col-12 ">Buy Now</a>
+              <a href="{{route ('customer.products.index', $product )}}" class="btn btn-secondary mt-3  col-12 ">Add To Basket</a>
+                      <div class="row mt-3 border rounded">
                       <h1 class="col-12 text-center mb-4 mt-4">Product Information</h1>
                 <h3 class="col-6 mt-2"><strong>Name:</strong></h3>
                 <h3 class="col-6 mt-2">{{$product->name}}</h3>
@@ -57,7 +59,7 @@
     	<div class="row col-md-12 col-12">
 	 @forelse ($products as $product)
    
-  <div class="col-md-4 col-6 ">
+  <div class="col-md-4 col-12 mt-3">
 	 <div class="card border border-secondary ">
 		 <a href="{{route('customer.products.show', $product) }}"><img src="{{ asset('storage/images/' . $product->image1) }}" 
     class="card-img-top d-md-block d-none" height="250" alt="" />
@@ -75,10 +77,11 @@
 </div>
 </div>
 
+               
 
 
 		 @empty
-         <p>You have no products displaying.</p>
+         <p>All product are out of stock</p>
         @endforelse
     <div class="footer">
     this is the footer
