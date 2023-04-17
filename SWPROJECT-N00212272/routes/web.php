@@ -33,6 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/admin/products', AdminProductController::class)->middleware(['auth'])->names('admin.products');
 
+Route::get('/customer/products/{product}/buy', [App\Http\Controllers\Customer\ProductController::class, 'buy'])->name('customer.products.buy');  
 
 Route::resource('/customer/products', CustomerProductController::class)->middleware(['auth'])->names('customer.products');
 
