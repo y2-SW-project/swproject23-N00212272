@@ -56,22 +56,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function buy(Product $product)
     {
-          $user = Auth::user();
-        $user->authorizeRoles('customer');
-
-        $products = Product::all();
-        $categories = Category::all();
-        $sizes = Size::all();
-        $conditions = Condition::all();
-        $materials = Material::all();
-        //This gets the sizes id from the pivot table and plucks the id to an array
-        $material_id = $product->materials->pluck('id')->toArray();
-
-        // $image1 = $product->old('image1');
         
-        return view('customer.products.edit')->with('product',$product)->with('categories',$categories)->with('conditions',$conditions)->with('sizes',$sizes)->with('materials',$materials)->with('material_id', $material_id);
+        return view('customer.products.buy')->with('product',$product);
     }
     public function create()
     {
@@ -149,6 +137,10 @@ class ProductController extends Controller
          return to_route('customer.products.index');
     
     }
-
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return to_route('customer.products.index')->with('success', 'Thank you for your purchase, A confirmation email has been sent, please check email for more details');
+    }
    
 }
