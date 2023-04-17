@@ -9,10 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -93,5 +89,19 @@
             @yield('content')
         </main>
     </div>
+       <div class="container-fluid bg-primary  pb-3">
+  <footer class="py-3 my-4 ">
+    <ul class="nav justify-content-center  border-bottom border-secondary pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Customer Service</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Delivery Service</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Conditions</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+    <p class="text-center text-muted">&copy; GoBaby IRE</p>
+  </footer>
+</div>
+</div>
+
 </body>
 </html>
