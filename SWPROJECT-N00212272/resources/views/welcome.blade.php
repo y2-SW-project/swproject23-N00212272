@@ -65,7 +65,7 @@
 </div>
 
 </form>
-	<div class="row col-md-8 col-12">
+	<div class="row col-md-9 col-12">
 	 @forelse ($products as $product)
    
   <div class="col-md-4 col-6 ">
