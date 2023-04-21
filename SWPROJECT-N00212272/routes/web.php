@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\SizeController as AdminSizeController;
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome.index');
 
+
 Auth::routes();
 
 
@@ -34,6 +35,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/admin/products', AdminProductController::class)->middleware(['auth'])->names('admin.products');
 
 Route::get('/customer/products/{product}/buy', [App\Http\Controllers\Customer\ProductController::class, 'buy'])->name('customer.products.buy');  
+
+
+// Route::get('admin/products/search', 'AdminProductController@search')->name('admin.products.search');
+
 
 Route::resource('/customer/products', CustomerProductController::class)->middleware(['auth'])->names('customer.products');
 

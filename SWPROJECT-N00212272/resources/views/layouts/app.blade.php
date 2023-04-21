@@ -30,18 +30,10 @@
                     </ul>
                    
                    
-                  
-                    {{-- <form action="/search" method="POST" role="search">
-			{{ csrf_field() }}
-			<div class="input-group">
-				<input type="text" class="form-control" name="q"
-					placeholder="Search a product by name"> <span class="input-group-btn">
-					<button type="submit" class="btn btn-default">
-						<span class="glyphicon glyphicon-search"></span>
-					</button>
-				</span>
+          
 			
-		</form> --}}
+	
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -71,11 +63,13 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
+                                
                             </li>
                             
                             

@@ -3,6 +3,10 @@
 @section('content')
 <div class="container">
 <div class="d-flex justify-content-between">
+{{-- <form action="{{ route('admin.products.search') }}" method="GET">
+    <input type="text" name="searchTerm" placeholder="Search products...">
+    <button type="submit">Search</button>
+</form> --}}
 
   <a href="{{ route('admin.products.create') }}" class="btn btn-lg bg-primary mb-2"><strong>New Product</strong></a>
     
@@ -111,5 +115,8 @@
 		</div>
 		</div>
 		
-		
+		{{-- <form action="{{ route('products.search') }}" method="GET">
+  <input type="text" name="query" placeholder="Search products...">
+  <button type="submit">Search</button>
+</form> --}}
 @endsection
