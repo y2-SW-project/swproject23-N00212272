@@ -17,6 +17,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+//didnt work for some reason
+    // public function search(Request $request)
+    // {
+    //     dd($request);
+    //     $searchTerm = $request->input('searchTerm');
+        
+    //     $searched = Product::where('name', 'like', '%'.$searchTerm.'%')->get();
+        
+        
+    //     return view('admin.products.index')->with(compact('searched'));
+    // }
+    
+
+
 
     public function index(Request $request)
     {
@@ -40,9 +54,10 @@ class ProductController extends Controller
         ->when($request->price != null, function($q) use ($request){
             return $q->orderby('price',$request->price);
         })
+        
         ->paginate(25);
 
-
+        
         return view('admin.products.index')->with(compact('products'));
     }
 
@@ -233,5 +248,7 @@ class ProductController extends Controller
         $product->delete();
         return to_route('admin.products.index');
     }
+
+
    
 }
